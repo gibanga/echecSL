@@ -21,7 +21,7 @@ echec.setName("a3"); //Le nom passe de a2 à a3
 ```
 - readCase()&emsp;Permet de lire toutes les informations enregistrées dans les variables de type Case
 ```C
-echec.readCase(); // retourne "a3 P blanc 2 1;
+echec.readCase(); // retourne "a3 P blanc 1 0;
 ```
 - isVide()&emsp;Vérifie si une pièce est sur une case
 ```C
