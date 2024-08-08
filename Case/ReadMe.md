@@ -1,5 +1,5 @@
-# 
-Cette librairie permet de controler 
+# Description
+Cette librairie permet de controler le comportement des cases sur un jeu d'échecs
 
 ## Téléchargement
 Déposer dans le dossier de librairie globale de l'IDE Arduino
