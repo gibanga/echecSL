@@ -115,6 +115,7 @@ void LectureTableau(void *pvParameters)
     if (courant != lecture)
     {
       courant = lecture;
+      
       // On donne la permission exclusive au coeur pour la lecture et l'ecrire
       // dans la memoire. Il faut garder se bloque tres court
       taskENTER_CRITICAL(&my_spinlock);
@@ -766,10 +767,10 @@ void initialiseGrille(Case (&echiquier)[8][8])
           echiquier[i][j] = Case(nom, 'B', joueur, i, j, led);
           break;
         case 3:
-          echiquier[i][j] = Case(nom, 'Q', joueur, i, j, led);
+          echiquier[i][j] = Case(nom, 'K', joueur, i, j, led);
           break;
         case 4:
-          echiquier[i][j] = Case(nom, 'K', joueur, i, j, led);
+          echiquier[i][j] = Case(nom, 'Q', joueur, i, j, led);
           break;
         }
       }
@@ -989,7 +990,7 @@ uint64_t virtuelleToBits(Case (&echiquier)[8][8])
   return bitfield;
 }
 
-// ------------------------------------Fonctions DEL ---------------------------------------------------------
+// ------------------------------------ Fonctions DEL ---------------------------------------------------------
 
 // Serpentine pour tester les DEL
 void InitialiseLED()
@@ -1118,7 +1119,7 @@ void ecranReset()
 // ------------------------------------Fonctions debug ---------------------------------------------------------
 
 // Affiche la position des pieces
-// TODO Changer k et j pour rangee et colonne pour clarifier
+// TODO Decrementer J pour tous les afficheTableau
 void afficheTableauPiece(Case (&echiquier)[8][8])
 {
   int k = 0; // Numero de la rangee du jeu
@@ -1132,7 +1133,7 @@ void afficheTableauPiece(Case (&echiquier)[8][8])
     }
     else
     {
-      for (int j = 0; j < 8; j++)
+      for (int j = 7; j >= 0; j--)
       {
         Serial.print("|"); // Separe les colonnes de la grille de jeu
         Serial.print(echiquier[k][j].getPiece());

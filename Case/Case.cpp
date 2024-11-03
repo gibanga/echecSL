@@ -292,7 +292,7 @@ int Case::Pion(Case echiquier[8][8], Move *actionPossible)
   Case destination; // Destination testee par un pion
 
   // Bouger 1 case
-  newX = _rangee + _joueur;
+  newX = _rangee - _joueur;
   newY = _colonne;
   destination = echiquier[newX][newY];
   // Si la destination est libre, le pion peut s'y déplacer
@@ -303,10 +303,10 @@ int Case::Pion(Case echiquier[8][8], Move *actionPossible)
   }
 
   // Bouger 2 cases
-  newX += _joueur;
+  newX -= _joueur;
   newY = _colonne;
   // Verifie si le pion peut se déplacer de deux cases
-  if ((_rangee == 1 && _joueur == 1) || (_rangee == 6 && _joueur == -1))
+  if ((_rangee == 1 && _joueur == -1) || (_rangee == 6 && _joueur == 1))  // Change les joueurs
   {
     destination = echiquier[newX][newY];
     // S'il n'y a pas d'obstacle entre le pion et la case, il peut s'y déplacer
@@ -320,7 +320,7 @@ int Case::Pion(Case echiquier[8][8], Move *actionPossible)
   // Capture
   for (int i = -1; i <= 1; i += 2)
   {
-    newX = _rangee + _joueur;
+    newX = _rangee - _joueur;
     newY = _colonne + i;
 
     // La nouvelle colonne est hors de l'échiquier
@@ -343,7 +343,7 @@ int Case::Pion(Case echiquier[8][8], Move *actionPossible)
   // au passage   ----> Ne fonctionne pas au moment de la remise de V1
   for (int i = -1; i <= 1; i += 2)
   {
-    newX = _rangee + _joueur;
+    newX = _rangee - _joueur;
     newY = _colonne + i;
 
     // La nouvelle colonne est hors de l'échiquier
