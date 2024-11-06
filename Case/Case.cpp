@@ -310,7 +310,7 @@ int Case::Pion(Case echiquier[8][8], Move *actionPossible)
   {
     destination = echiquier[newX][newY];
     // S'il n'y a pas d'obstacle entre le pion et la case, il peut s'y déplacer
-    if (destination.isVide() && echiquier[newX - _joueur][newY].isVide())
+    if (destination.isVide() && echiquier[newX + _joueur][newY].isVide())
     {
       actionPossible[actions] = {_rangee, _colonne, newX, newY};
       actions++;
